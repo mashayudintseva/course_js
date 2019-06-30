@@ -1,15 +1,9 @@
-let num = '2,6,6,2,1,9';
+let num = 266219;
 // let src = num.split(',');
+let str = num.toString();
 
+num = str[1] * str[2] * str[3] * str[4] * str[5] * str[0];
 
-let array = num.split(',');
-for(var i = 0, len = array.length; i < len; i++) {
-    if(typeof array[i] == 'number') {
-        num = array[1] * array[2]
-    } else if(typeof array[i] == 'string') {
-        num = array[1] * array[2] * array[3] * array[4] * array[5] * array[0]
-    }
-}
 console.log(num);
 let result = num ** 3;
 console.log(result);
