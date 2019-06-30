@@ -1,4 +1,3 @@
-alert('Hello World');
 let money, income, addExpenses, deposit, mission, period;
 money = 350000;
 income = 'freelance';
