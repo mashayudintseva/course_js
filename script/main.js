@@ -9,10 +9,7 @@ deposit = prompt('Есть ли у вас депозит в банке');
 deposit = Boolean(deposit);
 mission = 1000000;
 
-if (deposit='Нет'){
-    deposit = false;
-}
-console.log('deposit - ', deposit);
+
 console.log('money - ', typeof money);
 console.log('income - ', typeof income);
 console.log('deposit - ', typeof deposit);
@@ -39,15 +36,15 @@ console.log('Mission month', Math.ceil(month));
 let budgetDay = budgetMonth / 30;
 console.log('budget day: ', Math.floor(budgetDay))
 
-if (budgetDay=>800){
-    document.write('Высокий уровень дохода');
+if (budgetDay>=800){
+    console.log('Высокий уровень дохода');
 }
 else if((budgetDay>=300) && (budgetDay<=800)){
-    document.write('Средний уровень дохода');
+    console.log('Средний уровень дохода');
 }
-else if((budgetDay=>0) && (budgetDay<=300)){
-    document.write('Низкий уровень дохода');
+else if((budgetDay>=0) && (budgetDay<=300)){
+    console.log('Низкий уровень дохода');
 }
 else{
-    document.write('Что то пошло не так');
+    console.log('Что то пошло не так');
 }
