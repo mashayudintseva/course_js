@@ -37,12 +37,7 @@ function StatusSelect(){
     };
 }
 
-    $('#custom').change(function(event){
-        switch($('#custom').val()){
-            case 'english': $('.en-calendar').css("display", "flex"); break;
-            case 'russian': $('.ru-calendar').css("display", "flex"); break;
-        }
-    });
+    
 // if($('#custom').val() === 'e'){
 //     $('.en-calendar').css("display", "flex");
 //     console.log('en');
@@ -51,10 +46,10 @@ function StatusSelect(){
 //     $('.ru-calendar').css("display", "flex");
 //     console.log('ru');
 // }
-// let namePerson = prompt('Введите имя');
-// var message = (namePerson === 'Артём') ? 'Директор' :
-//   (namePerson === 'Максим') ? 'Преподаватель' :
-//   (namePerson === 'Кирилл') ? 'Куратор' :
-//   'Студент';
+let namePerson = prompt('Введите имя');
+var message = (namePerson === 'Артём') ? 'Директор' :
+  (namePerson === 'Максим') ? 'Преподаватель' :
+  (namePerson === 'Кирилл') ? 'Куратор' :
+  'Студент';
 
-// console.log(message);
+console.log(message);
