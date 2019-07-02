@@ -90,4 +90,4 @@ function getTargetMonth(){
     let TargetMonth =  mission / AccumulatedMonth();
     return Math.floor(TargetMonth);
 }
-console.log('Target Month', getTargetMonth(), month);
+console.log('Target Month', getTargetMonth(), 'month');
