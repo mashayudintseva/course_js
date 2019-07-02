@@ -24,7 +24,8 @@ let budgetMonth = money - question3 - question4;
 console.log('budget month = ', budgetMonth);
 
 let month = mission / money;
-console.log('Mission month', Math.ceil(month));
+month = Math.ceil(month);
+console.log('Mission month', month);
 
 // console.log('Income length', income.length);
 // console.log(addExpenses.toLowerCase());
@@ -34,7 +35,8 @@ console.log('Mission month', Math.ceil(month));
 // console.log('Цель заработать: ', mission, 'гривен');
 
 let budgetDay = budgetMonth / 30;
-console.log('budget day: ', Math.floor(budgetDay))
+budgetDay = Math.floor(budgetDay);
+console.log('budget day: ', budgetDay);
 
 if (budgetDay>=800){
     console.log('Высокий уровень дохода');

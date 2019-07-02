@@ -1,53 +1,30 @@
-// let main = $('#custom');
-
-// let ec = $('.en-calendar');
-// let rc = $('.ru-calendar');
-// let firstLanguage = main.lang.options[0];
-// console.log(firstLanguage);
-// if(main.attr('id') == 'en'){ ec.style.display = 'flex';};
-// if(main.attr('id') == 'ru'){ rc.style.display = 'flex';};
-// $('#custom').change(function(event){
-//     switch($('#custom').val()){
-//         case 'english': $('.en-calendar').css("display", "flex"); break;
-//         case 'russian': $('.ru-calendar').css("display", "flex"); break;
-//     }
-// });
-// function StatusSelect(){
-//     let selected = document.getElementById('custom').value;
-//     console.log(selected);
-//     if(selected === 'english'){ 
-//         $('.en-calendar').css("display", "flex");
-//         console.log('e');
-//     };
-//     if(selected === 'russian'){ 
-//         $('.ru-calendar').css("display", "flex");
-//         console.log('ru');
-//     };
-//     }
-function StatusSelect(){
-    let selected = document.getElementById('custom').value;
-    console.log(selected);
-    if(selected === 'english'){ 
-        $('.en-calendar').css("display", "flex");
-        console.log('e');
-    };
-    if(selected === 'russian'){ 
-        $('.ru-calendar').css("display", "flex");
-        console.log('ru');
-    };
+let lang = prompt('Введите язык (en/ru)');
+if (lang === 'en'){
+    console.log('Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday')
+}
+else if(lang === 'ru'){
+    console.log('Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье')
+}
+switch(lang){
+    case 'en': console.log('Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday'); break;
+    case 'ru': console.log('Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье'); break;
 }
 
-    
-// if($('#custom').val() === 'e'){
-//     $('.en-calendar').css("display", "flex");
-//     console.log('en');
-// }
-// else if($('#custom').val() === 'r'){
-//     $('.ru-calendar').css("display", "flex");
-//     console.log('ru');
-// }
+// let en = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+let language = [
+    ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+    ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+];
+// let language = [en, ru];
+
+let array = (lang === 'ru') ? language[0] :
+(lang === 'en') ? language[1] :
+'Error';
+
+console.log(array);
+
 let namePerson = prompt('Введите имя');
-var message = (namePerson === 'Артём') ? 'Директор' :
+let message = (namePerson === 'Артём') ? 'Директор' :
   (namePerson === 'Максим') ? 'Преподаватель' :
   (namePerson === 'Кирилл') ? 'Куратор' :
   'Студент';
