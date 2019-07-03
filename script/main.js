@@ -81,13 +81,13 @@ function getExpensesMonth(){
 }
 // console.log(getExpensesMonth());
 
-let AccumulatedMonth = function getAccumulatedMonth(){
+let accumulatedMonth = function getAccumulatedMonth(){
     return money - getExpensesMonth();
 }
 // console.log('Accumulated Month', AccumulatedMonth());
 
 function getTargetMonth(){
-    let TargetMonth =  mission / AccumulatedMonth();
-    return Math.floor(TargetMonth);
+    let targetMonth =  mission / accumulatedMonth();
+    return Math.floor(targetMonth);
 }
 console.log('Target Month', getTargetMonth(), 'month');
