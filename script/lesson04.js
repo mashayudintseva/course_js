@@ -1,7 +1,8 @@
 function myFunction(argumentFunc){
     if (typeof(argumentFunc) === "string"){
         console.log(arguments);
-        console.log(argumentFunc.trim());
+        let arg = argumentFunc.trim();
+        console.log(arg);
         if (argumentFunc.length >= 30){
             let str = argumentFunc.substr(0, 30).concat("...");
             console.log(str);
