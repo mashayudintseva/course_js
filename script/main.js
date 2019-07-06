@@ -1,35 +1,72 @@
 'use strict';
 
-let money, income, addExpenses, deposit, mission, period;
-addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-addExpenses = addExpenses.split(', ');
-// console.log(addExpenses);
-deposit = confirm('Есть ли у вас депозит в банке');
-deposit = Boolean(deposit);
-mission = 1000000;
-income = 'freelance';
+let money = 0,
+    start = function(){
+        do{
+            money = prompt('Ваш месячный доход');
+            console.log(money);
+        }
+        while (isNaN(money) || money == '' || money == null || money == ' '){
+            let inCorrect = money;
+        };
+    };
+
+start();
+
+let appData = {
+    income: {},
+    addIncome: [],
+    expenses: {},
+    addExpenses: [],
+    deposit: false,
+    mission: 1000000,
+    period: 12,
+    budget: money,
+    budgetMonth: 0,
+    budgetDay: 0,
+    expensesMonth: 0,
+    asking: function(){
+        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+        appData.addExpenses = addExpenses.toLowerCase().split(', ');
+        // console.log(addExpenses);
+        appData.deposit = confirm('Есть ли у вас депозит в банке');
+        appData.deposit = Boolean(deposit);
+    },
+    getAccumulatedMonth: function (){
+        return money - expensesAmount;
+    },
+    // console.log('Accumulated Month', AccumulatedMonth());
+    getTargetMonth: function(targetMonth){ 
+        if (accumulatedMonth() > 0){
+            return targetMonth =  Math.floor(appData.mission / accumulatedMonth());
+        }
+        if (accumulatedMonth() < 0){
+            return 'Цель не будет достигнута';
+        }   
+        return; 
+    },
+    getStatusIncome: function(){
+        if (budgetMonth>=800){
+            return('Высокий уровень дохода');
+        }
+        else if((budgetMonth>=300) && (budgetMonth<=800)){
+            return('Средний уровень дохода');
+        }
+        else if((budgetMonth>=0) && (budgetMonth<=300)){
+            return('Низкий уровень дохода');
+        }
+        else{
+            return('Что то пошло не так');
+        }
+    }
+}
 
 let showTypeof = function(item){
     console.log(item, typeof item);
 }
 
-let start = function(){
-    money = prompt('Ваш месячный доход');
-    console.log(money);
-    do{
-        money = prompt('Ваш месячный доход');
-        console.log(money);
-    }
-    while (isNaN(money) || money == '' || money == null || money == ' '){
-        let inCorrect = money;
-    };
-};
 
-start();
 
-showTypeof(money);
-showTypeof(income);
-showTypeof(deposit);
 
 // console.log('money - ', typeof money);
 // console.log('income - ', typeof income);
@@ -78,22 +115,22 @@ correct();
 let accumulatedMonth = function getAccumulatedMonth(){
     return money - expensesAmount;
 }
-// console.log('Accumulated Month', AccumulatedMonth());
-let tarMonth = function getTargetMonth(targetMonth){ 
-    if (accumulatedMonth() > 0){
-        return targetMonth =  Math.floor(mission / accumulatedMonth());
-    }
-    if (accumulatedMonth() < 0){
-        return 'Цель не будет достигнута';
-    }   
-    return; 
-}
-console.log('tarMonth():', tarMonth());
+// // console.log('Accumulated Month', AccumulatedMonth());
+// let tarMonth = function getTargetMonth(targetMonth){ 
+//     if (accumulatedMonth() > 0){
+//         return targetMonth =  Math.floor(mission / accumulatedMonth());
+//     }
+//     if (accumulatedMonth() < 0){
+//         return 'Цель не будет достигнута';
+//     }   
+//     return; 
+// }
+// console.log('tarMonth():', tarMonth());
 
 let budgetMonth = money - expensesAmount;
 // console.log('budget month = ', budgetMonth);
 
-let month = mission / money;
+let month = appData.mission / money;
 month = Math.ceil(month);
 // console.log('Mission month', month);
 
@@ -133,21 +170,8 @@ console.log('BudgetDay():', minusBudgetDay());
 
 
 //lesson04
-function getStatusIncome(){
-    if (budgetMonth>=800){
-        return('Высокий уровень дохода');
-    }
-    else if((budgetMonth>=300) && (budgetMonth<=800)){
-        return('Средний уровень дохода');
-    }
-    else if((budgetMonth>=0) && (budgetMonth<=300)){
-        return('Низкий уровень дохода');
-    }
-    else{
-        return('Что то пошло не так');
-    }
-}
-console.log('getStatusIncome()', getStatusIncome());
+
+console.log('getStatusIncome()', appData.getStatusIncome)
 
 
 
