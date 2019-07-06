@@ -1,6 +1,18 @@
 'use strict';
+let money = 0,
+    start = function(){
+        do{
+            money = prompt('Ваш месячный доход');
+            console.log(money);
+        }
+        while (isNaN(money) || money == '' || money == null || money == ' '){
+            let inCorrect = money;
+        };
+    };
 
-let money, income, addExpenses, deposit, mission, period;
+start();
+
+let income, addExpenses, deposit, mission, period;
 addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 addExpenses = addExpenses.split(', ');
 // console.log(addExpenses);
@@ -13,19 +25,7 @@ let showTypeof = function(item){
     console.log(item, typeof item);
 }
 
-let start = function(){
-    money = prompt('Ваш месячный доход');
-    console.log(money);
-    do{
-        money = prompt('Ваш месячный доход');
-        console.log(money);
-    }
-    while (isNaN(money) || money == '' || money == null || money == ' '){
-        let inCorrect = money;
-    };
-};
 
-start();
 
 showTypeof(money);
 showTypeof(income);
@@ -39,24 +39,21 @@ let question1,
 question2, question3, sum;
 
 let expensesMonth = function(){
-    let sum = 0; 
+    let question1,
+    question2, question3, sum = 0;
     
 
     for(let i = 0; i < 2; i++){
         if(i === 0){
-            do{
-                question1 = prompt('Какие обязательные ежемесячные расходы у вас есть? (одно слово)');
-            } while (question1 == '' || question1 == ' ')
+            question1 = prompt('Какие обязательные ежемесячные расходы у вас есть? (одно слово)');
         }
-        else{
-            do{
-                question2 = prompt('Какие обязательные ежемесячные расходы у вас есть? (одно слово)');
-            } while (question2 == '' || question2 == ' ')
+        else if (i === 1){
+            question2 = prompt('Какие обязательные ежемесячные расходы у вас есть? (одно слово)');
         }
 
         do{
             question3 = prompt('Во сколько это обойдется?', 100);
-        } while (question3 == '' || question3 == ' ')
+        } while (isNaN(question3) || question3 == '' || question3 == null || question3 == ' ')
 
         sum += question3;
         
@@ -65,15 +62,6 @@ let expensesMonth = function(){
     return sum;
 };
 let expensesAmount = expensesMonth();
-let correct = function(){
-    while (isNaN(expensesAmount) || expensesAmount == '' || expensesAmount == null || expensesAmount == ' '){
-        expensesAmount = prompt('Во сколько это обойдется?', 100);
-    }
-    while (isNaN(sum) || sum == '' || sum == null || sum == ' '){
-        sum = prompt('Во сколько это обойдется?', 100);
-    }
-}
-correct();
 
 let accumulatedMonth = function getAccumulatedMonth(){
     return money - expensesAmount;
