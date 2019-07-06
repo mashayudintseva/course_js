@@ -18,12 +18,13 @@ addExpenses = addExpenses.split(', ');
 // console.log(addExpenses);
 deposit = confirm('Есть ли у вас депозит в банке');
 deposit = Boolean(deposit);
-mission = 1000000;
+
 income = 'freelance';
 
 let showTypeof = function(item){
     console.log(item, typeof item);
 }
+
 
 
 
@@ -63,18 +64,22 @@ let expensesMonth = function(){
 };
 let expensesAmount = expensesMonth();
 
-let accumulatedMonth = function getAccumulatedMonth(){
+let accumulatedMonth = function(){
     return money - expensesAmount;
 }
 // console.log('Accumulated Month', AccumulatedMonth());
-let tarMonth = function getTargetMonth(targetMonth){ 
-    if (accumulatedMonth() > 0){
-        return targetMonth =  Math.floor(mission / accumulatedMonth());
-    }
-    if (accumulatedMonth() < 0){
-        return 'Цель не будет достигнута';
+
+let targetMonth = 0;
+
+let tarMonth = function(){ 
+    if (accumulatedMonth > 0){
+        mission = 1000000;
+        targetMonth =  mission / accumulatedMonth();
+        Math.floor(targetMonth);
+    } else{
+        console.log('Цель не будет достигнута');
     }   
-    return; 
+    
 }
 console.log('tarMonth():', tarMonth());
 
@@ -93,7 +98,7 @@ month = Math.ceil(month);
 // console.log('Цель заработать: ', mission, 'гривен');
 
 
-let minusBudgetDay = function minus(){
+let getBudgetDay = function(){
     let budgetDay = budgetMonth / 30;
     budgetDay = Math.floor(budgetDay);
     if(budgetDay > 0){
@@ -103,7 +108,7 @@ let minusBudgetDay = function minus(){
         return 'Error';
     }
 }
-console.log('BudgetDay():', minusBudgetDay());
+console.log('BudgetDay():', getBudgetDay());
 // console.log('budget day: ', budgetDay);
 
 // if (budgetMonth>=800){
