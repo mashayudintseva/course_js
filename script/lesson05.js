@@ -16,7 +16,28 @@
 // }
 // console.log('Function', myFunction('    Lorem ipsum dolor sit amet, consectetur adipiscing elit.   '));
 
-let array = ['2134', '5234523', '42324', '432', '7875', '34896', '27564'];
+
+
+let func = function find() {
+  
+    for(let i = num1; i <= num2; i++) {
+      let sum = 0;
+      
+      for(let j = 0; j <= i; j++) {
+        if(i % j === 0){
+            continue;
+        }
+      }
+      console.log(find());
+    }
+    
+    return sumArr;
+  }
+
+  
+
+
+  let array = ['2134', '5234523', '42324', '432', '7875', '34896', '27564'];
 
 array.forEach(em => {
   if (String(em).search(/(2|4)/) === 0) console.log(em);

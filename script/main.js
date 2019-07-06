@@ -16,10 +16,13 @@ let showTypeof = function(item){
 let start = function(){
     money = prompt('Ваш месячный доход');
     console.log(money);
-    while (isNaN(money) || money == '' || money == null || money == ' '){
+    do{
         money = prompt('Ваш месячный доход');
         console.log(money);
     }
+    while (isNaN(money) || money == '' || money == null || money == ' '){
+        let inCorrect = money;
+    };
 };
 
 start();
@@ -33,7 +36,7 @@ showTypeof(deposit);
 // console.log('deposit - ', typeof deposit);
 
 let question1,
-question2;
+question2, sum;
 
 let expensesMonth = function getExpensesMonth(){
     let sum = 0; 
@@ -44,18 +47,22 @@ let expensesMonth = function getExpensesMonth(){
             question1 = prompt('Какие обязательные ежемесячные расходы у вас есть? (одно слово)');
         }
         else if(i === 1){
-            question2 = prompt('Какие обязательные ежемесячные расходы у вас есть? (одно слово)')
+            question2 = prompt('Какие обязательные ежемесячные расходы у вас есть? (одно слово)');
         }
-        sum = prompt('Во сколько это обойдется?', 100);
-        while (isNaN(sum) || sum == '' || sum == null || sum == ' '){
-            sum = prompt('Во сколько это обойдется?', 100);
-        }
+        sum += prompt('Во сколько это обойдется?', 100);
+        
     }
 
     return sum;
 };
-
 let expensesAmount = expensesMonth();
+let correct = function(){
+    while (isNaN(expensesAmount) || expensesAmount == '' || expensesAmount == null || expensesAmount == ' '){
+        sum = prompt('Во сколько это обойдется?', 100);
+    }
+}
+correct();
+
 let accumulatedMonth = function getAccumulatedMonth(){
     return money - expensesAmount;
 }
