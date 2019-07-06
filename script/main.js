@@ -16,10 +16,13 @@ let showTypeof = function(item){
 let start = function(){
     money = prompt('Ваш месячный доход');
     console.log(money);
-    while (isNaN(money) || money == '' || money == null || money == ' '){
+    do{
         money = prompt('Ваш месячный доход');
         console.log(money);
     }
+    while (isNaN(money) || money == '' || money == null || money == ' '){
+        let inCorrect = money;
+    };
 };
 
 start();
@@ -33,29 +36,45 @@ showTypeof(deposit);
 // console.log('deposit - ', typeof deposit);
 
 let question1,
-question2;
+question2, question3, sum;
 
-let expensesMonth = function getExpensesMonth(){
+let expensesMonth = function(){
     let sum = 0; 
     
 
     for(let i = 0; i < 2; i++){
         if(i === 0){
-            question1 = prompt('Какие обязательные ежемесячные расходы у вас есть? (одно слово)');
+            do{
+                question1 = prompt('Какие обязательные ежемесячные расходы у вас есть? (одно слово)');
+            } while (question1 == '' || question1 == ' ')
         }
-        else if(i === 1){
-            question2 = prompt('Какие обязательные ежемесячные расходы у вас есть? (одно слово)')
+        else{
+            do{
+                question2 = prompt('Какие обязательные ежемесячные расходы у вас есть? (одно слово)');
+            } while (question2 == '' || question2 == ' ')
         }
-        sum = prompt('Во сколько это обойдется?', 100);
-        while (isNaN(sum) || sum == '' || sum == null || sum == ' '){
-            sum = prompt('Во сколько это обойдется?', 100);
-        }
+
+        do{
+            question3 = prompt('Во сколько это обойдется?', 100);
+        } while (question3 == '' || question3 == ' ')
+
+        sum += question3;
+        
     }
 
     return sum;
 };
-
 let expensesAmount = expensesMonth();
+let correct = function(){
+    while (isNaN(expensesAmount) || expensesAmount == '' || expensesAmount == null || expensesAmount == ' '){
+        expensesAmount = prompt('Во сколько это обойдется?', 100);
+    }
+    while (isNaN(sum) || sum == '' || sum == null || sum == ' '){
+        sum = prompt('Во сколько это обойдется?', 100);
+    }
+}
+correct();
+
 let accumulatedMonth = function getAccumulatedMonth(){
     return money - expensesAmount;
 }
