@@ -22,20 +22,44 @@ array.forEach(em => {
   if (String(em).search(/(2|4)/) === 0) console.log(em);
 })
 
-let func = function(num1, num2){
-  const sumArr = [];
-  for(let i = num1; i <= num2; i++){
-    let sum = 0;
-  
-  for(let j = 0; j <= i; j++){
-    if(i % j === 0){ 
-      sum += j;
-      continue;
+let number = function(num){
+  for(let i = 2; i <= num-1; i++){
+  if(num % i === 0){
+    return false;
+  }
+  }
+  return true;
+}
+let number2 = function(){
+  for(let i = 1; i <= 100; i++){
+    if(number(i) === true){
+      console.log(i + ' делители этого числа 1 и ' + i);
     }
   }
-  sumArr.push(sum);
-  console.log(sum, 'Делители этого числа 1 и ', i)
 }
-return sumArr;
-}
-console.log(func(1, 100))
+number2();
+// console.log(number(1))
+
+// let func = function(num1, num2){
+//   const sumArr = [];
+//   for(let i = num1; i <= num2; i++){
+//     let sum = 0;
+  
+//   for(let j = 2; j <= i; j++){
+//     if(i % j === 0){ 
+//       sum += j;
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+//   if(func() == true){
+//     sumArr.push(sum);
+//     console.log(sum, 'Делители этого числа 1 и ', i);
+//   }
+//   else{
+//     console.log('Ошибка')
+//   }
+// }
+// func(1, 100);
