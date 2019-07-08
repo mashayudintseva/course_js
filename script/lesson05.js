@@ -31,7 +31,7 @@ let number = function(num){
   return true;
 }
 let number2 = function(){
-  for(let i = 1; i <= 100; i++){
+  for(let i = 2; i <= 100; i++){
     if(number(i) === true){
       console.log(i + ' делители этого числа 1 и ' + i);
     }
