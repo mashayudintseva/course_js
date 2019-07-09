@@ -111,7 +111,7 @@ appData.getBudget.budgetDay();
 appData.getBudget.budgetMonth();
 let consol = function(){
     for(let key in appData){
-        console.log('Ключ: ' + key + ' Значение: ' + appData[key])
+        console.log('Наша программа включает в себя данные: ' + key)
     }
 }
 
