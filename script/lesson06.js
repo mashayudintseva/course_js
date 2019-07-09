@@ -24,22 +24,26 @@ for (let i = 0; i < week.length; i++){
   
   //console.log(week[i]);
     // console.log(item)
-  let slice = week.slice(1, 6);
-  slice = slice.join('<br>');
   let question = new Date();
   let today = question.getDay();
-  let string = slice.slice(week[today]);
-  let bold =  week[today].bold();
-  
-  str = string +'<br>'+ bold;
-  let p = document.querySelector('#week').innerHTML = str;
-};
-for(let item of week){
-  
-  if((item === 'Суббота') || (item === 'Воскресенье')){
-    let weekend = ['Суббота', 'Воскресенье'];
-    weekend = weekend.join('<br>');
-    document.querySelector('#weekends').innerHTML = weekend.italics() + '<br>';
+
+  if((week[i] === week[today]) && (week[i] === week[0]) && (week[i] === week[6])){
+    str = '<b><i>' + week[i] + '</i></b>';
+    let del = week.slice[i];
+
+  }
+  else if((week[i] === week[0]) && (week[i] === week[6])){
+    str = '<i>' + week[i] + '</i>';
+    let del = week.slice[i];
+  } 
+  else if(week[i] === week[today]){
+    str = '<b>' + week[i] + '</b>';
+    let del = week.slice[i];
+  } else{
+    str = week[i];
   }
 
+  let div = document.createElement('div');
+  div.innerHTML = str;
+  document.body.appendChild(div);
 }
