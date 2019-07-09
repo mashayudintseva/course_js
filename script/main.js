@@ -109,10 +109,16 @@ appData.getStatusIncome();
 appData.tarMonth();
 appData.getBudget.budgetDay();
 appData.getBudget.budgetMonth();
+let consol = function(){
+    for(let key in appData){
+        console.log('Ключ: ' + key + ' Значение: ' + appData[key])
+    }
+}
+
 console.log('Расходы за месяц: ', appData.expensesMonth);
 console.log('За какой период будет достигнута цель (в месяцах): ', appData.tarMonth());
 console.log('Уровень дохода: ', appData.getStatusIncome());
-
+consol();
 // console.log('money - ', typeof money);
 // console.log('income - ', typeof income);
 // console.log('deposit - ', typeof deposit);
