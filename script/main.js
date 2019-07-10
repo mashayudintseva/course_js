@@ -150,7 +150,7 @@ console.log('Уровень дохода: ', appData.getStatusIncome());
 consol();
 console.log('appData.income: ', appData.income);
 function ucFirst() {
-    for(let i = 0; i < appData.upAddEx.length; i++){
+    for(let i = 0; i < appData.addExpenses.length; i++){
         appData.upAddEx[i] = appData.addExpenses[i][0].toUpperCase() + appData.addExpenses[i].slice(1);
     }
     appData.upAddEx.join(', ');
