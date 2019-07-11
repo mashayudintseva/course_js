@@ -1,14 +1,19 @@
 let btn = document.getElementById('start');
+
 let firstPlus = document.getElementsByTagName('button')[0];
 let secondPlus = document.getElementsByTagName('button')[1];
+
 let checkbox = document.querySelector('#deposit-check');
+
 let addIncome = document.querySelectorAll('.additional_income-item');
+
 let resultBudgetDay = document.getElementsByClassName('result-budget_day');
 let resultExpensesMonth = document.getElementsByClassName('result-expenses_month');
 let resultAdditionalIncome = document.getElementsByClassName('result-additional_income');
 let resultAdditionalExpenses = document.getElementsByClassName('result-additional_expenses');
 let resultIncomePeriod = document.getElementsByClassName('result-income_period');
 let resultTargetMonth = document.getElementsByClassName('result-target_month');
+
 let salaryAmount = document.querySelector('.salary-amount');
 let incomeTitle = document.querySelector('.income-title');
 let incomeAmount = document.querySelector('.income-amount');
