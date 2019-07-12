@@ -7,12 +7,12 @@ let checkbox = document.querySelector('#deposit-check');
 
 let addIncome = document.querySelectorAll('.additional_income-item');
 
-let resultBudgetDay = document.getElementsByClassName('result-budget_day');
-let resultExpensesMonth = document.getElementsByClassName('result-expenses_month');
-let resultAdditionalIncome = document.getElementsByClassName('result-additional_income');
-let resultAdditionalExpenses = document.getElementsByClassName('result-additional_expenses');
-let resultIncomePeriod = document.getElementsByClassName('result-income_period');
-let resultTargetMonth = document.getElementsByClassName('result-target_month');
+let resultBudgetDay = document.getElementsByClassName('budget_day-value');
+let resultExpensesMonth = document.getElementsByClassName('expenses_month-value');
+let resultAdditionalIncome = document.getElementsByClassName('additional_income-value');
+let resultAdditionalExpenses = document.getElementsByClassName('additional_expenses-value');
+let resultIncomePeriod = document.getElementsByClassName('income_period-value');
+let resultTargetMonth = document.getElementsByClassName('target_month-value');
 
 let salaryAmount = document.querySelector('.salary-amount');
 let incomeTitle = document.querySelector('.income-title');
