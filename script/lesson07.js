@@ -56,7 +56,9 @@ let day = date.getDate();
 let hour = date.getHours();
 let minutes = date.getMinutes();
 let seconds = date.getSeconds();
-let p = document.querySelector('.date');
+let p = document.createElement('p');
+let body = document.querySelector('body');
+body.appendChild(p);
 
 if(month < 10){
   month = '0' + month;
