@@ -126,8 +126,9 @@ let appData = {
     },
     addIncomeBlock: function(){
         let cloneIncomeItem = incomeItems[0].cloneNode(true);
-        cloneIncomeItem.value = "";
         incomeItems[0].parentNode.insertBefore(cloneIncomeItem, firstPlus);
+        cloneIncomeItem.childNodes[1].value = "";
+        cloneIncomeItem.childNodes[3].value = "";
         incomeItems = document.querySelectorAll('.income-items');
         
         if(incomeItems.length === 3){
