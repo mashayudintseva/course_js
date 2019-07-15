@@ -67,6 +67,7 @@ let reset = function(){
         input[i].value = "";
         periodSelect.value = 1;
         periodAmount.innerHTML = periodSelect.value;
+        input[i].removeAttribute('disabled');
     }
 };
 let start =  function(){
