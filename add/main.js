@@ -14,10 +14,6 @@ function circleAnimate(){
 function cancelAnimation(){
     animate = requestAnimationFrame(circleAnimate);
     cancelAnimationFrame(animate);
-    return animate;
 }
-
-return cancelAnimation();
 }
 eventListener();
-console.log('eventListener: ', eventListener());
