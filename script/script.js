@@ -163,28 +163,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
     const togglePopUp = () => {
         const main = document.querySelector('main');
-        const services = document.querySelector('#service-block');
-        const portfolio = document.querySelector('#portfolio');
-        const companies = document.querySelector('#companies');
         const a = main.querySelector('a');
         a.style.cursor = 'pointer';
-        let a2 = a.cloneNode(true);
-        let aChild = a2.lastChild;
-        services.appendChild(a2);
-        aChild.classList.add('scroll');
-        a2.setAttribute('href', '#portfolio');
-        let a3 = a.cloneNode(true);
-        let aChild2 = a3.lastChild;
-        portfolio.appendChild(a3);
-        aChild2.classList.add('scroll');
-        aChild2.style.marginTop = 5 + '%';
-        a3.setAttribute('href', '#calc');
-        let a4 = a.cloneNode(true);
-        let aChild3 = a4.lastChild;
-        companies.appendChild(a4);
-        aChild3.classList.add('scroll');
-        a4.setAttribute('href', '#command');
-
         const popup = document.querySelector('.popup');
         const popupBtn = document.querySelectorAll('.popup-btn');
         const popupClose = document.querySelector('.popup-close');
