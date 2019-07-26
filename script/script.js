@@ -245,9 +245,103 @@ window.addEventListener('DOMContentLoaded', function() {
 
     };
     slider();
+    const calcValidate = () => {
+        const calc1 = document.querySelectorAll('.calc-item')[1];
+        const calc2 = document.querySelectorAll('.calc-item')[2];
+        const calc3 = document.querySelectorAll('.calc-item')[3];
+        calc2.addEventListener('input', () => {
+            calc2.value = calc2.value.replace(/\D/g, '');
+        })
+        calc1.addEventListener('input', () => {
+            calc1.value = calc1.value.replace(/\D/g, '');
+        })
+        calc3.addEventListener('input', () => {
+            calc3.value = calc3.value.replace(/\D/g, '');
+        })
+    }
+    calcValidate();
+    const attr = () => {
+        const img = document.querySelectorAll('.command__photo');
+        for (let i = 0; i < img.length; i++) {
+            console.log('img[i]: ', img[i]);
+            const src = img[i].getAttribute('src');
+            img[i].addEventListener('mouseout', (event) => {
+
+                event.target.src = src;
+
+            })
+            img[i].addEventListener('mouseover', (event) => {
+                event.target.src = event.target.dataset.img;
+
+            })
 
 
+        }
 
+        const calc = (price = 100) => {
+            const calcBlock = document.querySelector('.calc-block'),
+                calcType = document.querySelector('.calc-type'),
+                calcDay = document.querySelector('.calc-day'),
+                calcSquare = document.querySelector('.calc-square'),
+                calcCount = document.querySelector('.calc-count'),
+                totalValue = document.getElementById('total');
+
+            const countSum = () => {
+                let total = 0,
+                    countValue = 1,
+                    dayValue = 1;
+                const typeValue = calcType.options[calcType.selectedIndex].value,
+                    squareValue = +calcSquare.value;
+
+                if (calcCount.value > 1) {
+                    countValue += (calcCount.value - 1) / 10;
+                }
+
+                if (calcDay.value && calcDay.value < 5) {
+                    dayValue *= 2;
+                } else if (calcDay.value && calcDay.value < 10) {
+                    dayValue *= 1.5;
+                } else {
+                    dayValue *= 1;
+                }
+
+                if (typeValue && squareValue) {
+                    total = price * typeValue * squareValue * countValue * dayValue;
+                    let zero = 0,
+                        plus = 10,
+                        res = 0;
+                    let int = setInterval(() => {
+
+                        res += zero + plus;
+                        if (res === total || res >= total) {
+                            res = total;
+                            clearInterval(int);
+                        }
+                        if (res >= 15000) {
+                            res = total;
+                        }
+                        totalValue.textContent = Math.round(res);
+                    }, 5);
+
+                }
+
+
+                //totalValue.textContent = Math.round(total);
+            }
+
+            calcBlock.addEventListener('change', (event) => {
+                const target = event.target;
+
+
+                if (target === calcType || target === calcSquare || target === calcDay || target === calcCount) {
+                    countSum();
+                }
+
+            })
+        }
+        calc(100);
+    }
+    attr();
 
 
 
