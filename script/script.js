@@ -20,7 +20,12 @@ window.addEventListener('DOMContentLoaded', function() {
             let seconds = Math.floor(timeRemaining % 60);
             let minutes = Math.floor((timeRemaining / 60) % 60);
             let hours = Math.floor(timeRemaining / 60 / 60);
-            return { timeRemaining, hours, minutes, seconds }
+            return {
+                timeRemaining,
+                hours,
+                minutes,
+                seconds
+            }
         }
 
         function updateClock() {
@@ -60,8 +65,8 @@ window.addEventListener('DOMContentLoaded', function() {
         setTimeout(zero, 1);
         updateClock();
     }
-    countTimer('27 july 2019');
-    setInterval(countTimer, 1000, '27 july 2019');
+    countTimer('7 august 2019');
+    setInterval(countTimer, 1000, '7 august 2019');
 
     //Menu
     const toggleMenu = () => {
@@ -93,8 +98,11 @@ window.addEventListener('DOMContentLoaded', function() {
                 if (window.screen.width > 450) {
                     popupContent.animate([
                         // keyframes
-                        { transform: 'translateY(-300px)' },
-                        { transform: 'translateY(0px)' }
+                        {
+                            transform: 'translateY(-300px)'
+                        }, {
+                            transform: 'translateY(0px)'
+                        }
                     ], {
                         // timing options
                         duration: 1000,
@@ -338,14 +346,49 @@ window.addEventListener('DOMContentLoaded', function() {
                 }
 
             })
+
         }
+
         calc(100);
+
+        const sendForm = () => {
+            const errorMessage = 'Что-то пошло не так',
+                loadMessage = 'Загрузка...',
+                successMessage = 'Спасибо! Мы скоро с вами свяжемся!';
+
+            const form = document.getElementById('form1');
+            console.log('form: ', form);
+            const statusMessage = document.createElement('div');
+            statusMessage.style.cssText = 'font-size: 2rem';
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault(event);
+                form.appendChild(statusMessage);
+
+                const request = new XMLHttpRequest();
+                request.open('POST', 'server.php');
+                request.setRequestHeader('Content-Type', 'multipart/form-data');
+                const formData = new FormData(form);
+                request.send(formData);
+
+                request.addEventListener('readystatechange', () => {
+                    statusMessage.textContent = loadMessage;
+                })
+
+                if (request.readyState !== 4) {
+                    return;
+                }
+                if (request.status === 200) {
+                    statusMessage.textContent = successMessage;
+                } else {
+                    statusMessage.textContent = errorMessage;
+                }
+            })
+        };
+
+        sendForm();
     }
     attr();
-
-
-
-
 
 
 
