@@ -394,15 +394,15 @@ window.addEventListener('DOMContentLoaded', function() {
             })
 
         };
-        form.addEventListener('submit', (event) => {
-            event.preventDefault(event);
+        const submitForm = (form) => {
+            console.log('event: ', event);
             form.appendChild(statusMessage);
             img.setAttribute('src', 'more.png');
             const formData = new FormData(form);
             let body = {};
             formData.forEach((val, key) => {
                 body[key] = val;
-            })
+            });
             postData(body)
                 .then((response) => {
 
@@ -411,74 +411,28 @@ window.addEventListener('DOMContentLoaded', function() {
                     }
 
                     img.setAttribute('src', 'ok.png');
-                    formName.value = '';
-                    formPhone.value = '';
-                    formEmail.value = '';
+                    let inputs = form.querySelectorAll('input');
+                    for (let i = 0; i < inputs.length; i++) {
+                        inputs[i].value = "";
+                    }
                 })
                 .catch(error => {
                     img.setAttribute('src', 'er.png');
                     console.error(error);
                 });
-
-
+        }
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(event);
+            submitForm(form);
         });
 
         formDownPage.addEventListener('submit', (event) => {
             event.preventDefault(event);
-            formDownPage.appendChild(statusMessage);
-            img.setAttribute('src', 'more.png');
-            const formData = new FormData(formDownPage);
-            let body = {};
-            formData.forEach((val, key) => {
-                body[key] = val;
-            })
-            postData(body)
-                .then((response) => {
-
-                    if (response.status !== 200) {
-                        throw new Error('Status network not 200')
-                    }
-
-                    img.setAttribute('src', 'ok.png');
-                    form2Name.value = '';
-                    form2Phone.value = '';
-                    form2Email.value = '';
-                    formText.value = '';
-                })
-                .catch(error => {
-                    img.setAttribute('src', 'er.png');
-                    console.error(error);
-                });
-
-
+            submitForm(formDownPage);
         });
         formPopUp.addEventListener('submit', (event) => {
             event.preventDefault(event);
-            formPopUp.appendChild(statusMessage);
-            img.setAttribute('src', 'more.png');
-            const formData = new FormData(formPopUp);
-            let body = {};
-            formData.forEach((val, key) => {
-                body[key] = val;
-            })
-            postData(body)
-                .then((response) => {
-
-                    if (response.status !== 200) {
-                        throw new Error('Status network not 200')
-                    }
-
-                    img.setAttribute('src', 'ok.png');
-                    form3Name.value = '';
-                    form3Phone.value = '';
-                    form3Email.value = '';
-                })
-                .catch((error) => {
-                    img.setAttribute('src', 'er.png');
-                    console.error(error);
-                });
-
-
+            submitForm(formPopUp);
         });
     }
     sendForm();
