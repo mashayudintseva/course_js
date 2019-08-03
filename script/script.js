@@ -284,133 +284,131 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
         }
+    }
+    const calc = (price = 100) => {
+        const calcBlock = document.querySelector('.calc-block'),
+            calcType = document.querySelector('.calc-type'),
+            calcDay = document.querySelector('.calc-day'),
+            calcSquare = document.querySelector('.calc-square'),
+            calcCount = document.querySelector('.calc-count'),
+            totalValue = document.getElementById('total');
 
-        const calc = (price = 100) => {
-            const calcBlock = document.querySelector('.calc-block'),
-                calcType = document.querySelector('.calc-type'),
-                calcDay = document.querySelector('.calc-day'),
-                calcSquare = document.querySelector('.calc-square'),
-                calcCount = document.querySelector('.calc-count'),
-                totalValue = document.getElementById('total');
+        const countSum = () => {
+            let total = 0,
+                countValue = 1,
+                dayValue = 1;
+            const typeValue = calcType.options[calcType.selectedIndex].value,
+                squareValue = +calcSquare.value;
 
-            const countSum = () => {
-                let total = 0,
-                    countValue = 1,
-                    dayValue = 1;
-                const typeValue = calcType.options[calcType.selectedIndex].value,
-                    squareValue = +calcSquare.value;
-
-                if (calcCount.value > 1) {
-                    countValue += (calcCount.value - 1) / 10;
-                }
-
-                if (calcDay.value && calcDay.value < 5) {
-                    dayValue *= 2;
-                } else if (calcDay.value && calcDay.value < 10) {
-                    dayValue *= 1.5;
-                } else {
-                    dayValue *= 1;
-                }
-
-                if (typeValue && squareValue) {
-                    total = price * typeValue * squareValue * countValue * dayValue;
-                    let zero = 0,
-                        plus = 10,
-                        res = 0;
-                    let int = setInterval(() => {
-
-                        res += zero + plus;
-                        if (res === total || res >= total) {
-                            res = total;
-                            clearInterval(int);
-                        }
-                        if (res >= 15000) {
-                            res = total;
-                        }
-                        totalValue.textContent = Math.round(res);
-                    }, 5);
-
-                }
-
-
-                //totalValue.textContent = Math.round(total);
+            if (calcCount.value > 1) {
+                countValue += (calcCount.value - 1) / 10;
             }
 
-            calcBlock.addEventListener('change', (event) => {
-                const target = event.target;
+            if (calcDay.value && calcDay.value < 5) {
+                dayValue *= 2;
+            } else if (calcDay.value && calcDay.value < 10) {
+                dayValue *= 1.5;
+            } else {
+                dayValue *= 1;
+            }
+
+            if (typeValue && squareValue) {
+                total = price * typeValue * squareValue * countValue * dayValue;
+                let zero = 0,
+                    plus = 10,
+                    res = 0;
+                let int = setInterval(() => {
+
+                    res += zero + plus;
+                    if (res === total || res >= total) {
+                        res = total;
+                        clearInterval(int);
+                    }
+                    if (res >= 15000) {
+                        res = total;
+                    }
+                    totalValue.textContent = Math.round(res);
+                }, 5);
+
+            }
 
 
-                if (target === calcType || target === calcSquare || target === calcDay || target === calcCount) {
-                    countSum();
-                }
-
-            })
-
+            //totalValue.textContent = Math.round(total);
         }
 
-        calc(100);
+        calcBlock.addEventListener('change', (event) => {
+            const target = event.target;
 
-        const sendForm = () => {
-            const errorMessage = 'Что-то пошло не так',
-                loadMessage = 'Загрузка...',
-                successMessage = 'Спасибо! Мы скоро с вами свяжемся!';
 
-            const form = document.getElementById('form1');
-            const formPopUp = document.getElementById('form3');
-            const formDownPage = document.getElementById('form2');
-            const formName = document.getElementById('form1-name'),
-                formEmail = document.getElementById('form1-email'),
-                formPhone = document.getElementById('form1-phone'),
-                form2Name = document.getElementById('form2-name'),
-                form2Email = document.getElementById('form2-email'),
-                form2Phone = document.getElementById('form2-phone'),
-                formText = document.getElementById('form2-message'),
-                form3Name = document.getElementById('form3-name'),
-                form3Email = document.getElementById('form3-email'),
-                form3Phone = document.getElementById('form3-phone');
-
-            const statusMessage = document.createElement('div');
-            const img = document.createElement('img');
-            statusMessage.appendChild(img);
-            statusMessage.style.cssText = 'font-size: 2rem';
-            const formPhoneReplace = () => {
-                const target = event.target;
-                target.value = target.value.replace(/[^0-9+]/g, '');
+            if (target === calcType || target === calcSquare || target === calcDay || target === calcCount) {
+                countSum();
             }
-            const formNameReplace = () => {
-                const target = event.target;
-                target.value = target.value.replace(/[^а-яА-я ]/g, '');
-            }
-            formPhone.addEventListener('input', formPhoneReplace);
-            form2Phone.addEventListener('input', formPhoneReplace);
-            form3Phone.addEventListener('input', formPhoneReplace);
-            formName.addEventListener('input', formNameReplace);
-            form2Name.addEventListener('input', formNameReplace);
-            form3Name.addEventListener('input', formNameReplace);
-            formText.addEventListener('input', formNameReplace);
-            form.addEventListener('submit', (event) => {
-                event.preventDefault(event);
-                form.appendChild(statusMessage);
-                img.setAttribute('src', 'more.png');
-                const formData = new FormData(form);
-                let body = {};
-                formData.forEach((val, key) => {
-                    body[key] = val;
+
+        })
+
+    }
+
+    calc(100);
+
+    const sendForm = () => {
+        const form = document.getElementById('form1');
+        const formPopUp = document.getElementById('form3');
+        const formDownPage = document.getElementById('form2');
+        const formName = document.getElementById('form1-name'),
+            formEmail = document.getElementById('form1-email'),
+            formPhone = document.getElementById('form1-phone'),
+            form2Name = document.getElementById('form2-name'),
+            form2Email = document.getElementById('form2-email'),
+            form2Phone = document.getElementById('form2-phone'),
+            formText = document.getElementById('form2-message'),
+            form3Name = document.getElementById('form3-name'),
+            form3Email = document.getElementById('form3-email'),
+            form3Phone = document.getElementById('form3-phone');
+
+        const statusMessage = document.createElement('div');
+        const img = document.createElement('img');
+        statusMessage.appendChild(img);
+        statusMessage.style.cssText = 'font-size: 2rem';
+        const formPhoneReplace = () => {
+            const target = event.target;
+            target.value = target.value.replace(/[^0-9+]/g, '');
+        }
+        const formNameReplace = () => {
+            const target = event.target;
+            target.value = target.value.replace(/[^а-яА-я ]/g, '');
+        }
+        formPhone.addEventListener('input', formPhoneReplace);
+        form2Phone.addEventListener('input', formPhoneReplace);
+        form3Phone.addEventListener('input', formPhoneReplace);
+        formName.addEventListener('input', formNameReplace);
+        form2Name.addEventListener('input', formNameReplace);
+        form3Name.addEventListener('input', formNameReplace);
+        formText.addEventListener('input', formNameReplace);
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(event);
+            form.appendChild(statusMessage);
+            img.setAttribute('src', 'more.png');
+            const formData = new FormData(form);
+            let body = {};
+            formData.forEach((val, key) => {
+                body[key] = val;
+            })
+            postData(body)
+                .then(() => {
+                    img.setAttribute('src', 'ok.png');
+                    formName.value = '';
+                    formPhone.value = '';
+                    formEmail.value = '';
                 })
-                postData(body, () => {
-                        img.setAttribute('src', 'ok.png');
-                        formName.value = '';
-                        formPhone.value = '';
-                        formEmail.value = '';
-                    },
-                    (error) => {
-                        img.setAttribute('src', 'er.png');
-                        console.error(error);
-                    });
+                .catch(error => {
+                    img.setAttribute('src', 'er.png');
+                    console.error(error);
+                });
 
 
-            });
-            const postData = (body, outputData, errorData) => {
+        });
+        const postData = (body) => {
+            return new Promise((resolve, reject) => {
                 const request = new XMLHttpRequest();
                 request.addEventListener('readystatechange', () => {
 
@@ -418,9 +416,9 @@ window.addEventListener('DOMContentLoaded', function() {
                         return;
                     }
                     if (request.status === 200) {
-                        outputData();
+                        resolve();
                     } else {
-                        errorData(request.status)
+                        reject(request.status)
                     }
                 })
                 request.open('POST', 'server.php');
@@ -428,32 +426,35 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
                 request.send(JSON.stringify(body));
-            }
+            })
+        }
 
-            formDownPage.addEventListener('submit', (event) => {
-                event.preventDefault(event);
-                formDownPage.appendChild(statusMessage);
-                img.setAttribute('src', 'more.png');
-                const formData = new FormData(formDownPage);
-                let body = {};
-                formData.forEach((val, key) => {
-                    body[key] = val;
+        formDownPage.addEventListener('submit', (event) => {
+            event.preventDefault(event);
+            formDownPage.appendChild(statusMessage);
+            img.setAttribute('src', 'more.png');
+            const formData = new FormData(formDownPage);
+            let body = {};
+            formData.forEach((val, key) => {
+                body[key] = val;
+            })
+            postData2(body)
+                .then(() => {
+                    img.setAttribute('src', 'ok.png');
+                    form2Name.value = '';
+                    form2Phone.value = '';
+                    form2Email.value = '';
+                    formText.value = '';
                 })
-                postData2(body, () => {
-                        img.setAttribute('src', 'ok.png');
-                        form2Name.value = '';
-                        form2Phone.value = '';
-                        form2Email.value = '';
-                        formText.value = '';
-                    },
-                    (error) => {
-                        img.setAttribute('src', 'er.png');
-                        console.error(error);
-                    });
+                .catch(error => {
+                    img.setAttribute('src', 'er.png');
+                    console.error(error);
+                });
 
 
-            });
-            const postData2 = (body, outputData, errorData) => {
+        });
+        const postData2 = (body) => {
+            return new Promise((resolve, reject) => {
                 const request2 = new XMLHttpRequest();
                 request2.addEventListener('readystatechange', () => {
 
@@ -461,9 +462,9 @@ window.addEventListener('DOMContentLoaded', function() {
                         return;
                     }
                     if (request2.status === 200) {
-                        outputData();
+                        resolve();
                     } else {
-                        errorData(request2.status)
+                        reject(request2.status)
                     }
                 })
                 request2.open('POST', 'server.php');
@@ -471,30 +472,33 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
                 request2.send(JSON.stringify(body));
-            }
-            formPopUp.addEventListener('submit', (event) => {
-                event.preventDefault(event);
-                formPopUp.appendChild(statusMessage);
-                img.setAttribute('src', 'more.png');
-                const formData = new FormData(formPopUp);
-                let body = {};
-                formData.forEach((val, key) => {
-                    body[key] = val;
-                })
-                postData3(body, () => {
-                        img.setAttribute('src', 'ok.png');
-                        form3Name.value = '';
-                        form3Phone.value = '';
-                        form3Email.value = '';
-                    },
-                    (error) => {
-                        img.setAttribute('src', 'er.png');
-                        console.error(error);
-                    });
-
-
             });
-            const postData3 = (body, outputData, errorData) => {
+        }
+        formPopUp.addEventListener('submit', (event) => {
+            event.preventDefault(event);
+            formPopUp.appendChild(statusMessage);
+            img.setAttribute('src', 'more.png');
+            const formData = new FormData(formPopUp);
+            let body = {};
+            formData.forEach((val, key) => {
+                body[key] = val;
+            })
+            postData3(body)
+                .then(() => {
+                    img.setAttribute('src', 'ok.png');
+                    form3Name.value = '';
+                    form3Phone.value = '';
+                    form3Email.value = '';
+                })
+                .catch(error => {
+                    img.setAttribute('src', 'er.png');
+                    console.error(error);
+                });
+
+
+        });
+        const postData3 = (body) => {
+            return new Promise((resolve, reject) => {
                 const request3 = new XMLHttpRequest();
                 request3.addEventListener('readystatechange', () => {
 
@@ -502,9 +506,9 @@ window.addEventListener('DOMContentLoaded', function() {
                         return;
                     }
                     if (request3.status === 200) {
-                        outputData();
+                        resolve();
                     } else {
-                        errorData(request3.status)
+                        reject(request3.status)
                     }
                 })
                 request3.open('POST', 'server.php');
@@ -512,11 +516,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
                 request3.send(JSON.stringify(body));
-            }
+            });
         };
-
-        sendForm();
     }
+    sendForm();
+
     attr();
 
 
