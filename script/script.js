@@ -384,6 +384,16 @@ window.addEventListener('DOMContentLoaded', function() {
         form2Name.addEventListener('input', formNameReplace);
         form3Name.addEventListener('input', formNameReplace);
         formText.addEventListener('input', formNameReplace);
+        const postData = (body) => {
+            return fetch('./server.php', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            })
+
+        };
         form.addEventListener('submit', (event) => {
             event.preventDefault(event);
             form.appendChild(statusMessage);
@@ -394,7 +404,12 @@ window.addEventListener('DOMContentLoaded', function() {
                 body[key] = val;
             })
             postData(body)
-                .then(() => {
+                .then((response) => {
+
+                    if (response.status !== 200) {
+                        throw new Error('Status network not 200')
+                    }
+
                     img.setAttribute('src', 'ok.png');
                     formName.value = '';
                     formPhone.value = '';
@@ -407,27 +422,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
         });
-        const postData = (body) => {
-            return new Promise((resolve, reject) => {
-                const request = new XMLHttpRequest();
-                request.addEventListener('readystatechange', () => {
-
-                    if (request.readyState !== 4) {
-                        return;
-                    }
-                    if (request.status === 200) {
-                        resolve();
-                    } else {
-                        reject(request.status)
-                    }
-                })
-                request.open('POST', 'server.php');
-                request.setRequestHeader('Content-Type', 'application/json');
-
-
-                request.send(JSON.stringify(body));
-            })
-        }
 
         formDownPage.addEventListener('submit', (event) => {
             event.preventDefault(event);
@@ -438,8 +432,13 @@ window.addEventListener('DOMContentLoaded', function() {
             formData.forEach((val, key) => {
                 body[key] = val;
             })
-            postData2(body)
-                .then(() => {
+            postData(body)
+                .then((response) => {
+
+                    if (response.status !== 200) {
+                        throw new Error('Status network not 200')
+                    }
+
                     img.setAttribute('src', 'ok.png');
                     form2Name.value = '';
                     form2Phone.value = '';
@@ -453,27 +452,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
         });
-        const postData2 = (body) => {
-            return new Promise((resolve, reject) => {
-                const request2 = new XMLHttpRequest();
-                request2.addEventListener('readystatechange', () => {
-
-                    if (request2.readyState !== 4) {
-                        return;
-                    }
-                    if (request2.status === 200) {
-                        resolve();
-                    } else {
-                        reject(request2.status)
-                    }
-                })
-                request2.open('POST', 'server.php');
-                request2.setRequestHeader('Content-Type', 'application/json');
-
-
-                request2.send(JSON.stringify(body));
-            });
-        }
         formPopUp.addEventListener('submit', (event) => {
             event.preventDefault(event);
             formPopUp.appendChild(statusMessage);
@@ -483,41 +461,25 @@ window.addEventListener('DOMContentLoaded', function() {
             formData.forEach((val, key) => {
                 body[key] = val;
             })
-            postData3(body)
-                .then(() => {
+            postData(body)
+                .then((response) => {
+
+                    if (response.status !== 200) {
+                        throw new Error('Status network not 200')
+                    }
+
                     img.setAttribute('src', 'ok.png');
                     form3Name.value = '';
                     form3Phone.value = '';
                     form3Email.value = '';
                 })
-                .catch(error => {
+                .catch((error) => {
                     img.setAttribute('src', 'er.png');
                     console.error(error);
                 });
 
 
         });
-        const postData3 = (body) => {
-            return new Promise((resolve, reject) => {
-                const request3 = new XMLHttpRequest();
-                request3.addEventListener('readystatechange', () => {
-
-                    if (request3.readyState !== 4) {
-                        return;
-                    }
-                    if (request3.status === 200) {
-                        resolve();
-                    } else {
-                        reject(request3.status)
-                    }
-                })
-                request3.open('POST', 'server.php');
-                request3.setRequestHeader('Content-Type', 'application/json');
-
-
-                request3.send(JSON.stringify(body));
-            });
-        };
     }
     sendForm();
 
