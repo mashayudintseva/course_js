@@ -421,19 +421,15 @@ window.addEventListener('DOMContentLoaded', function() {
                     console.error(error);
                 });
         }
-        form.addEventListener('submit', (event) => {
+        const submitEvent = () => {
+            const target = event.target;
             event.preventDefault(event);
-            submitForm(form);
-        });
+            submitForm(target);
+        }
+        form.addEventListener('submit', submitEvent);
 
-        formDownPage.addEventListener('submit', (event) => {
-            event.preventDefault(event);
-            submitForm(formDownPage);
-        });
-        formPopUp.addEventListener('submit', (event) => {
-            event.preventDefault(event);
-            submitForm(formPopUp);
-        });
+        formDownPage.addEventListener('submit', submitEvent);
+        formPopUp.addEventListener('submit', submitEvent);
     }
     sendForm();
 
