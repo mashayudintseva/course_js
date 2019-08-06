@@ -4,13 +4,18 @@ import './index.css';
 import Clock from './App';
 import * as serviceWorker from './serviceWorker';
 import Button from './Button';
+import Nav from './Nav'
+import Header from './Header'
+import Top from './TopNav'
 
 class App extends React.Component{
     render(){
         return(
             <div className="wrapper">
-                <Clock />
-                <Button />
+                <Nav />
+                <Top />
+                <Header />
+                
             </div>
         )
     }
