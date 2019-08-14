@@ -39,7 +39,7 @@ export default function formValidate() {
             let val = target.value.replace(/\D/g, "");
 
             if (def.length >= val.length) val = def;
-            target.value = matrix.replace(/[_\d]/g, function(a) {
+            target.value = matrix.replace(/[_\d]/g, (a) => {
                 return i < val.length ? val.charAt(i++) : a
             });
             i = target.value.indexOf("_");
@@ -74,5 +74,17 @@ export default function formValidate() {
         footerPhone.addEventListener("focus", mask, false);
         footerPhone.addEventListener("blur", mask, false);
         footerPhone.addEventListener("keydown", mask, false);
+
+        if (window.location.pathname === '/mozaika.html' || window.location.pathname === '/schelkovo.html') {
+            const mozaikaPhone = document.getElementById('callback_form-phone'),
+                mozaikaName = document.getElementById('callback_form-name');
+
+            mozaikaPhone.addEventListener("input", mask, false);
+            mozaikaPhone.addEventListener("focus", mask, false);
+            mozaikaPhone.addEventListener("blur", mask, false);
+            mozaikaPhone.addEventListener("keydown", mask, false);
+            mozaikaName.addEventListener('input', formNameReplace);
+            mozaikaPhone.addEventListener('input', formPhoneReplace);
+        }
     })
 }

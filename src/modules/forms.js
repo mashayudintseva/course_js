@@ -99,15 +99,11 @@ export default function forms() {
 
     if (window.location.pathname === '/mozaika.html' || window.location.pathname === '/schelkovo.html') {
         const formMozaika = document.getElementById('card_order'),
-            mozaikaPhone = document.getElementById('callback_form-phone'),
-            mozaikaName = document.getElementById('callback_form-name'),
             mozaikaSubmit = document.getElementById('callback_form-btn'),
             mozaikaCheck = document.getElementById('card_check');
 
         checkThis(mozaikaCheck, mozaikaSubmit);
 
-        mozaikaName.addEventListener('input', formNameReplace);
-        mozaikaPhone.addEventListener('input', formPhoneReplace);
         formMozaika.addEventListener('submit', submitEvent);
     }
 
