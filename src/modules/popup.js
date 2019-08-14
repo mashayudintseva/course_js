@@ -32,7 +32,7 @@ export default function popup() {
     popups(callForm, callBtn);
 
 
-    if (window.location.pathname === '/index.html') {
+    if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
         const formGift = document.getElementById('gift'),
             giftBtn = document.querySelector('.fixed-gift');
 

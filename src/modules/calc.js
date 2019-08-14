@@ -1,5 +1,5 @@
 export default function calc() {
-    if (window.location.pathname === '/index.html') {
+    if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
         const calculate = () => {
             const calc = document.getElementById('card_order'),
                 time = calc.querySelector('.time'),

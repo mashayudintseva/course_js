@@ -1,28 +1,21 @@
 export default function forms() {
     const thanks = document.querySelector('#thanks');
     const form = document.getElementById('banner-form'),
-        name = document.getElementById('banner-name'),
-        phone = document.getElementById('phone'),
         submitBtn = form.querySelector('button'),
         check = document.getElementById('check1'),
         statusMessage = document.createElement('div'),
         formDownPage = document.getElementById('footer_form'),
-        footerPhone = document.getElementById('callback_footer_form-phone'),
         submitFooter = formDownPage.querySelector('button'),
         errorPopup = document.getElementById('error'),
         checks = formDownPage.querySelectorAll('input[name="club-name"]'),
         popup1Form = document.getElementById('form1'),
         popup2Form = document.getElementById('form2'),
-        form1phone = document.getElementById('callback_form1-phone'),
-        form1name = popup1Form.querySelector('input[name="name"]'),
         popup1Check = document.getElementById('check'),
         popup1Submit = popup1Form.querySelector('button'),
-        form2phone = document.getElementById('callback_form2-phone'),
-        form2name = popup2Form.querySelector('input[name="name"]'),
         popup2Check = document.getElementById('check2'),
         popup2Submit = popup2Form.querySelector('button');
 
-    function checkThis(check, btn) {
+    const checkThis = (check, btn) => {
         check.addEventListener('change', () => {
             if (check.checked) {
                 btn.removeAttribute('disabled');
@@ -54,21 +47,8 @@ export default function forms() {
         })
     }
 
-    const formPhoneReplace = () => {
-        const target = event.target;
-        target.value = target.value.replace(/[^0-9+]/g, '');
-    }
-    const formNameReplace = () => {
-        const target = event.target;
-        target.value = target.value.replace(/[^а-яА-я ]/g, '');
-    }
-    phone.addEventListener('input', formPhoneReplace);
-    name.addEventListener('input', formNameReplace);
-    form1phone.addEventListener('input', formPhoneReplace);
-    form1name.addEventListener('input', formNameReplace);
-    form2phone.addEventListener('input', formPhoneReplace);
-    form2name.addEventListener('input', formNameReplace);
-    footerPhone.addEventListener('input', formPhoneReplace);
+
+
     const postData = (body) => {
         return fetch('./server.php', {
             method: 'POST',

@@ -13,7 +13,7 @@ import carousel from './modules/carousel';
 import clubSelect from './modules/clublist';
 import sliders from './modules/sliders';
 import calc from './modules/calc';
-
+import formValidate from './modules/formValidate';
 
 
 
@@ -23,3 +23,4 @@ clubSelect();
 sliders();
 forms();
 calc();
+formValidate();

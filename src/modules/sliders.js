@@ -7,7 +7,7 @@ export default function sliders() {
         elem[index].classList.add(strClass);
     }
 
-    function slider(slider, slide, dots, btn, dotsDiv) {
+    const slider = (slider, slide, dots, btn, dotsDiv) => {
 
         dotsDiv.classList.add('slider-dots')
         dots.appendChild(btn);
